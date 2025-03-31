@@ -50,20 +50,20 @@ process_directory() {
     local dir="$1"
     local output_pdf
     output_pdf="$dir/$(basename "$dir").pdf"
-
+    
     log_message "📂 Processing directory: $dir"
     ((TOTAL_DIRS++))
-
+    
     # Find compatible images and convert incompatible ones
     images=()
     while IFS= read -r file; do
         ext="${file##*.}"
         ext="${ext,,}"  # Convert extension to lowercase
-
+        
         if [[ " $COMPATIBLE_EXT " =~ $ext ]]; then
             # Compatible image, use directly
             images+=("$file")
-        elif [[ " $INCOMPATIBLE_EXT " =~ $ext ]]; then
+            elif [[ " $INCOMPATIBLE_EXT " =~ $ext ]]; then
             # Incompatible image, convert to PNG
             converted_file="$CONVERTED_DIR/$(basename "$file").png"
             log_message "🔄 Converting $file → $converted_file"
@@ -75,19 +75,19 @@ process_directory() {
                 ((ERRORS++))
             fi
         fi
-    ext_filters=()
-    for ext in $COMPATIBLE_EXT $INCOMPATIBLE_EXT; do
-        ext_filters+=("-iname" "*.$ext")
-    done
-    
+        ext_filters=()
+        for ext in $COMPATIBLE_EXT $INCOMPATIBLE_EXT; do
+            ext_filters+=("-iname" "*.$ext")
+        done
+        
     done < <(find "$dir" -maxdepth 1 -type f \( "${ext_filters[@]}" \) | sort)
-
+    
     # If images are found, generate the PDF
     if [ ${#images[@]} -gt 0 ]; then
         log_message "📸 Found ${#images[@]} images in $dir."
         ((TOTAL_IMAGES+=${#images[@]}))
         log_message "📄 Creating PDF: $output_pdf"
-
+        
         if img2pdf "${images[@]}" -o "$output_pdf"; then
             log_message "✅ PDF successfully created: $output_pdf"
             ((TOTAL_PDFS++))
