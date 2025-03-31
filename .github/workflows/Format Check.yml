@@ -18,9 +18,24 @@ jobs:
           curl -L https://github.com/mvdan/sh/releases/download/v3.4.0/shfmt_v3.4.0_linux_amd64 -o /usr/local/bin/shfmt
           chmod +x /usr/local/bin/shfmt
 
-      - name: Check formatting
+      - name: Check formatting and auto-correct
         run: |
-          if ! shfmt -d .; then
-            echo "Formatting errors detected!"
-            exit 1
+          echo "Checking shell script formatting..."
+          # Ejecutar shfmt -d para ver si hay diferencias
+          diff_output=$(shfmt -d .)
+          if [ -n "$diff_output" ]; then
+            echo -e "\033[31mFormatting issues detected!\033[0m"
+            echo -e "\033[33mDifferences from standard formatting:\033[0m"
+            echo "$diff_output"
+            echo "Automatically fixing formatting..."
+            # Ejecutar shfmt -w . para corregir el formato
+            shfmt -w .
+            # Agregar y hacer commit de los cambios
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git config --global user.name "github-actions[bot]"
+            git add .
+            git commit -m "Auto-format shell scripts"
+            git push
+          else
+            echo "No formatting issues found."
           fi
