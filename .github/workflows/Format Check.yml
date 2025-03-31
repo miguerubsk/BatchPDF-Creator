@@ -21,21 +21,27 @@ jobs:
       - name: Check formatting and auto-correct
         run: |
           echo "Checking shell script formatting..."
-          # Ejecutar shfmt -d para ver si hay diferencias
           diff_output=$(shfmt -d .)
           if [ -n "$diff_output" ]; then
             echo -e "\033[31mFormatting issues detected!\033[0m"
             echo -e "\033[33mDifferences from standard formatting:\033[0m"
             echo "$diff_output"
             echo "Automatically fixing formatting..."
-            # Ejecutar shfmt -w . para corregir el formato
             shfmt -w .
-            # Agregar y hacer commit de los cambios
+
+            # Verificar si realmente se hicieron cambios
+            if git diff --exit-code; then
+              echo "No changes detected after auto-formatting."
+              exit 0
+            fi
+
+            # Configurar credenciales de GitHub Actions para hacer commit
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
             git config --global user.name "github-actions[bot]"
+
+            # Agregar y hacer commit de los cambios
             git add .
-            git commit -m "Auto-format shell scripts"
-            git push
+            git commit -m "Auto-format shell scripts" && git push || echo "Nothing to push"
           else
             echo "No formatting issues found."
           fi
