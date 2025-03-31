@@ -35,18 +35,18 @@ sudo apt update && sudo apt install -y img2pdf imagemagick
 ### Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your_username/pdf-generator.git
-   cd pdf-generator
+   git clone https://github.com/miguerubsk/BatchPDF-Creator.git
+   cd BatchPDF-Creator
    ```
 2. Make the script executable:
    ```sh
-   chmod +x pdf_generator.sh
+   chmod +x generate_pdfs.sh
    ```
 
 ## Usage
 Run the script in the directory where your images are located:
 ```sh
-./pdf_generator.sh
+./generate_pdfs.sh
 ```
 This will:
 - Process all directories without subdirectories.
