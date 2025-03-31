@@ -1,0 +1,108 @@
+#!/bin/bash
+
+LOG_FILE="./pdf_generation.log"
+CONVERTED_DIR="./.converted_images"
+TOTAL_DIRS=0
+TOTAL_IMAGES=0
+TOTAL_PDFS=0
+ERRORS=0
+
+# Function to log messages with a timestamp
+log_message() {
+    local message="$1"
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $message" | tee -a "$LOG_FILE"
+}
+
+# Check if img2pdf is installed
+if ! command -v img2pdf &> /dev/null; then
+    log_message "🛠 img2pdf not found. Installing..."
+    sudo apt update && sudo apt install -y img2pdf || { log_message "❌ Error installing img2pdf"; exit 1; }
+fi
+log_message "✅ img2pdf is installed."
+
+# Check if ImageMagick is installed (for conversion)
+if ! command -v convert &> /dev/null; then
+    log_message "🛠 ImageMagick not found. Installing..."
+    sudo apt update && sudo apt install -y imagemagick || { log_message "❌ Error installing ImageMagick"; exit 1; }
+fi
+log_message "✅ ImageMagick is installed."
+
+# Image formats compatible with img2pdf
+COMPATIBLE_EXT="jpg jpeg png tiff" # Do NOT change this
+# Formats requiring prior conversion
+INCOMPATIBLE_EXT="bmp webp gif svg"
+
+# Create a directory for converted images if it does not exist
+mkdir -p "$CONVERTED_DIR"
+
+# Function to process directories without subdirectories
+process_directory() {
+    local dir="$1"
+    local output_pdf="$dir/$(basename "$dir").pdf"
+
+    log_message "📂 Processing directory: $dir"
+    ((TOTAL_DIRS++))
+
+    # Find compatible images and convert incompatible ones
+    images=()
+    while IFS= read -r file; do
+        ext="${file##*.}"
+        ext="${ext,,}"  # Convert extension to lowercase
+
+        if [[ " $COMPATIBLE_EXT " =~ " $ext " ]]; then
+            # Compatible image, use directly
+            images+=("$file")
+        elif [[ " $INCOMPATIBLE_EXT " =~ " $ext " ]]; then
+            # Incompatible image, convert to PNG
+            converted_file="$CONVERTED_DIR/$(basename "$file").png"
+            log_message "🔄 Converting $file → $converted_file"
+            if convert "$file" "$converted_file"; then
+                images+=("$converted_file")
+                log_message "✅ Successfully converted: $converted_file"
+            else
+                log_message "❌ Error converting $file"
+                ((ERRORS++))
+            fi
+        fi
+    done < <(find "$dir" -maxdepth 1 -type f \( $(echo $COMPATIBLE_EXT $INCOMPATIBLE_EXT | sed 's/ / -o -iname *./g' | sed 's/^/-iname *./') \) | sort)
+
+    # If images are found, generate the PDF
+    if [ ${#images[@]} -gt 0 ]; then
+        log_message "📸 Found ${#images[@]} images in $dir."
+        ((TOTAL_IMAGES+=${#images[@]}))
+        log_message "📄 Creating PDF: $output_pdf"
+
+        if img2pdf "${images[@]}" -o "$output_pdf"; then
+            log_message "✅ PDF successfully created: $output_pdf"
+            ((TOTAL_PDFS++))
+        else
+            log_message "❌ Error generating PDF in $dir"
+            ((ERRORS++))
+        fi
+    else
+        log_message "⚠️ No images found in $dir. Skipping..."
+    fi
+}
+
+# Iterate through all subdirectories
+log_message "🔍 Searching for directories without subdirectories..."
+while IFS= read -r -d '' dir; do
+    process_directory "$dir"
+done < <(find . -type d -print0)
+
+# Remove the temporary converted images directory upon completion
+if [ -d "$CONVERTED_DIR" ]; then
+    log_message "🗑️ Removing temporary converted images..."
+    rm -rf "$CONVERTED_DIR"
+    log_message "✅ Converted images directory removed."
+fi
+
+# Display final summary
+log_message "========================================="
+log_message "📊 FINAL SUMMARY:"
+log_message "📂 Directories processed: $TOTAL_DIRS"
+log_message "📸 Images converted: $TOTAL_IMAGES"
+log_message "📄 PDFs generated: $TOTAL_PDFS"
+log_message "❌ Errors: $ERRORS"
+log_message "✅ Process completed. Check the log: $LOG_FILE"
+log_message "========================================="
