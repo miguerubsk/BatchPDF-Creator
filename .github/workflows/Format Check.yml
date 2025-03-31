@@ -15,5 +15,5 @@ jobs:
 
       - name: Check formatting
         run: |
-          sudo apt update && sudo apt install -y shfmt
+          sudo apt-get update && sudo apt-get install -y shfmt
           shfmt -d .
