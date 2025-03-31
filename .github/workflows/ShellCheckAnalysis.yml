@@ -19,4 +19,4 @@ jobs:
         run: sudo apt-get install -y shellcheck
 
       - name: Run ShellCheck
-        run: find . -type f -name "*.sh" | xargs shellcheck
+        run: find . -type f -name "*.sh" -print0 | xargs -0 shellcheck
