@@ -16,14 +16,24 @@ log_message() {
 # Check if img2pdf is installed
 if ! command -v img2pdf &> /dev/null; then
     log_message "🛠 img2pdf not found. Installing..."
-    sudo apt update && sudo apt install -y img2pdf || { log_message "❌ Error installing img2pdf"; exit 1; }
+    if sudo apt update && sudo apt install -y img2pdf; then
+        log_message "✅ img2pdf installed successfully."
+    else
+        log_message "❌ Error installing img2pdf"
+        exit 1
+    fi
 fi
 log_message "✅ img2pdf is installed."
 
 # Check if ImageMagick is installed (for conversion)
 if ! command -v convert &> /dev/null; then
     log_message "🛠 ImageMagick not found. Installing..."
-    sudo apt update && sudo apt install -y imagemagick || { log_message "❌ Error installing ImageMagick"; exit 1; }
+    if sudo apt update && sudo apt install -y imagemagick; then
+        log_message "✅ ImageMagick installed successfully."
+    else
+        log_message "❌ Error installing ImageMagick"
+        exit 1
+    fi
 fi
 log_message "✅ ImageMagick is installed."
 
@@ -38,7 +48,8 @@ mkdir -p "$CONVERTED_DIR"
 # Function to process directories without subdirectories
 process_directory() {
     local dir="$1"
-    local output_pdf="$dir/$(basename "$dir").pdf"
+    local output_pdf
+    output_pdf="$dir/$(basename "$dir").pdf"
 
     log_message "📂 Processing directory: $dir"
     ((TOTAL_DIRS++))
@@ -49,10 +60,10 @@ process_directory() {
         ext="${file##*.}"
         ext="${ext,,}"  # Convert extension to lowercase
 
-        if [[ " $COMPATIBLE_EXT " =~ " $ext " ]]; then
+        if [[ " $COMPATIBLE_EXT " =~ $ext ]]; then
             # Compatible image, use directly
             images+=("$file")
-        elif [[ " $INCOMPATIBLE_EXT " =~ " $ext " ]]; then
+        elif [[ " $INCOMPATIBLE_EXT " =~ $ext ]]; then
             # Incompatible image, convert to PNG
             converted_file="$CONVERTED_DIR/$(basename "$file").png"
             log_message "🔄 Converting $file → $converted_file"
@@ -64,7 +75,7 @@ process_directory() {
                 ((ERRORS++))
             fi
         fi
-    done < <(find "$dir" -maxdepth 1 -type f \( $(echo $COMPATIBLE_EXT $INCOMPATIBLE_EXT | sed 's/ / -o -iname *./g' | sed 's/^/-iname *./') \) | sort)
+    done < <(find "$dir" -maxdepth 1 -type f \( $(echo "$COMPATIBLE_EXT" "$INCOMPATIBLE_EXT" | sed 's/ / -o -iname *./g' | sed 's/^/-iname *./') \) | sort)
 
     # If images are found, generate the PDF
     if [ ${#images[@]} -gt 0 ]; then
