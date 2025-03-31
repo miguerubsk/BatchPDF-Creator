@@ -76,7 +76,7 @@ Distributed under the GPL-3.0 license. See `LICENSE` for more information.
 ## Contact
 Miguel González García - [@migueru98](https://twitter.com/migueru98) - miguerubsk@gmail.com
 
-Project Link: [https://github.com/miguerubsk/BatchPDF-Creator](BatchPDF-Creator)
+Project Link: [BatchPDF-Creator]([BatchPDF-Creator](https://github.com/miguerubsk/BatchPDF-Creator))
 
 ## Acknowledgments
 - [ImageMagick](https://imagemagick.org/)
