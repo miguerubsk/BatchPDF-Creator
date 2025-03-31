@@ -110,6 +110,7 @@ done < <(find . -type d -print0)
 if [ -d "$CONVERTED_DIR" ]; then
     log_message "🗑️ Removing temporary converted images..."
     rm -rf "$CONVERTED_DIR"
+    rmdir "$CONVERTED_DIR"
     log_message "✅ Converted images directory removed."
 fi
 
