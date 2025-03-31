@@ -75,7 +75,7 @@ process_directory() {
                 ((ERRORS++))
             fi
         fi
-    done < <(find "$dir" -maxdepth 1 -type f \( $(echo "$COMPATIBLE_EXT" "$INCOMPATIBLE_EXT" | sed 's/ / -o -iname *./g' | sed 's/^/-iname *./') \) | sort)
+    done < <(find "$dir" -maxdepth 1 -type f \( $(echo "$COMPATIBLE_EXT $INCOMPATIBLE_EXT" | awk '{for (i=1; i<=NF; i++) print "-iname *."$i}' | paste -sd " -o ") \) | sort)
 
     # If images are found, generate the PDF
     if [ ${#images[@]} -gt 0 ]; then
