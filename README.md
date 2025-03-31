@@ -69,7 +69,7 @@ Contributions are welcome! To contribute:
 5. Open a Pull Request
 
 ## License
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the GPL-3.0 license. See `LICENSE` for more information.
 
 ## Contact
 Miguel González García - [@migueru98](https://twitter.com/migueru98) - miguerubsk@gmail.com
