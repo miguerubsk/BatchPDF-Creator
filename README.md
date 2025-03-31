@@ -5,6 +5,8 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
+[![ShellCheck Analysis](https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/ShellCheckAnalysis.yml/badge.svg)](https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/ShellCheckAnalysis.yml)
+[![Codacy Security Scan](https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/codacy.yml/badge.svg)](https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/codacy.yml)
 
 ## About The Project
 
