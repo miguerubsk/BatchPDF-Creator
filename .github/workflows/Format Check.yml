@@ -13,7 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install shfmt
+        run: |
+          curl -L https://github.com/mvdan/sh/releases/download/v3.4.0/shfmt_v3.4.0_linux_amd64 -o /usr/local/bin/shfmt
+          chmod +x /usr/local/bin/shfmt
+
       - name: Check formatting
         run: |
-          sudo apt-get update && sudo apt-get install -y shfmt
-          shfmt -d .
+          if ! shfmt -d .; then
+            echo "Formatting errors detected!"
+            exit 1
+          fi
