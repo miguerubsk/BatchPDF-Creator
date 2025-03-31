@@ -1,0 +1,22 @@
+name: Release Automation
+
+on:
+  push:
+    tags:
+      - 'v*'  # Se activará cuando hagas un push con un tag como v1.0.0
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: "New version 🚀"
+          files: |
+            generate_pdfs.sh  # Agrega más archivos si es necesario
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
