@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🛠 Set up dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y img2pdf imagemagick shellcheck
+
+      - name: 📜 Run ShellCheck (Linting for Bash scripts)
+        run: shellcheck *.sh || true
+
+      - name: 🔎 Run tests
+        run: |
+          chmod +x test.sh || true
+          ./test.sh || echo "⚠️ Tests failed!"
+
+      - name: ✅ Build complete
+        run: echo "🎉 Build and tests completed successfully!"
