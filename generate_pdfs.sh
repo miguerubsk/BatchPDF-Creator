@@ -16,7 +16,7 @@ log_message() {
 # Check if img2pdf is installed
 if ! command -v img2pdf &> /dev/null; then
     log_message "🛠 img2pdf not found. Installing..."
-    if sudo apt update && sudo apt install -y img2pdf; then
+    if sudo apt-get update && sudo apt-get install -y img2pdf; then
         log_message "✅ img2pdf installed successfully."
     else
         log_message "❌ Error installing img2pdf"
@@ -28,7 +28,7 @@ log_message "✅ img2pdf is installed."
 # Check if ImageMagick is installed (for conversion)
 if ! command -v convert &> /dev/null; then
     log_message "🛠 ImageMagick not found. Installing..."
-    if sudo apt update && sudo apt install -y imagemagick; then
+    if sudo apt-get update && sudo apt-get install -y imagemagick; then
         log_message "✅ ImageMagick installed successfully."
     else
         log_message "❌ Error installing ImageMagick"
