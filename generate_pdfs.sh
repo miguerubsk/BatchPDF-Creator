@@ -75,7 +75,8 @@ process_directory() {
                 ((ERRORS++))
             fi
         fi
-    done < <(find "$dir" -maxdepth 1 -type f \( $(echo "$COMPATIBLE_EXT $INCOMPATIBLE_EXT" | awk '{print "-iname \"*."$1"\""}' ORS=' -o ') \) | sort)
+    ext_filters=$(echo "$COMPATIBLE_EXT $INCOMPATIBLE_EXT" | awk '{for (i=1; i<=NF; i++) print "-iname \"*."$i"\""}' ORS=' -o ')
+    done < <(find "$dir" -maxdepth 1 -type f \( $ext_filters \) | sort)
 
     # If images are found, generate the PDF
     if [ ${#images[@]} -gt 0 ]; then
