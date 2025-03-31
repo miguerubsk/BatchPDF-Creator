@@ -1,0 +1,17 @@
+# Etiqueta "bash" si los cambios afectan scripts Bash
+bash:
+  - '**/*.sh'
+
+# Etiqueta "docs" si los cambios afectan archivos de documentación
+documentation:
+  - '**/*.md'
+  - 'docs/**'
+
+# Etiqueta "ci/cd" si los cambios afectan a los workflows de GitHub Actions
+ci/cd:
+  - '.github/workflows/**'
+
+# Etiqueta "dependencies" si los cambios afectan a archivos de dependencias
+dependencies:
+  - 'package.json'
+  - 'requirements.txt'
