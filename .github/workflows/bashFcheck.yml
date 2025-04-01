@@ -17,4 +17,4 @@ jobs:
           sudo mv shfmt /usr/local/bin/
 
       - name: Run shfmt
-        run: shfmt -d .
+        run: /usr/local/bin/shfmt -d .
