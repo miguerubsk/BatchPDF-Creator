@@ -38,4 +38,4 @@ Please try to create bug reports that are:
 3. Create your feature branch (`git checkout -b feat/amazing_feature`)
 4. Commit your changes (`git commit -m 'feat: add amazing_feature'`) BatchPDF-Creator uses [conventional commits](https://www.conventionalcommits.org), so please follow the specification in your commit messages.
 5. Push to the branch (`git push origin feat/amazing_feature`)
-6. [Open a Pull Request
+6. Open a Pull Request.
