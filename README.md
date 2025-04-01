@@ -161,7 +161,7 @@ After execution, PDFs will be generated in their respective directories, and the
 ## Roadmap
 - [x] Add support for multiple image formats.
 - [x] Include logging for process tracking.
-- [ ] Implement multi-threaded processing for faster execution.
+- [ ] Add a version for Windows.
 - [ ] Support more advanced image processing features.
 
 ## Support
