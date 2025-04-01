@@ -7,9 +7,6 @@ on:
       - main
     paths:
       - README.md
-  pull_request:
-    paths:
-      - README.md
 
 jobs:
   lint:
