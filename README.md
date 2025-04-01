@@ -206,7 +206,7 @@ _For more information and to report security issues, please refer to our [securi
 Distributed under the GPL-3.0 license. See `LICENSE` for more information.
 
 ## Contact
-Miguel González García - [@migueru98](https://twitter.com/migueru98) - miguerubsk@gmail.com
+Miguel González García - [@migueru98](https://twitter.com/migueru98) - [miguerubsk@gmail.com](mailto:miguerubsk@gmail.com)
 
 Project Link: [BatchPDF-Creator](https://github.com/miguerubsk/BatchPDF-Creator)
 
