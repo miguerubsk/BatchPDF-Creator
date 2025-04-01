@@ -19,3 +19,6 @@ jobs:
         run: |
           shfmt -version
           shfmt -d . || true
+
+      - name: Autoformat Shell Scripts
+        run: shfmt -w .
