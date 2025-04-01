@@ -16,11 +16,11 @@
   <a href="#about"><strong>Explore the docs »</strong></a>
   <br />
   <br />
-  <a href="https://github.com/miguerubsk/BatchPDF-Creator/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  <a href="https://github.com/miguerubsk/BatchPDF-Creator/issues/new?assignees=miguerubsk&labels=bug&template=01_BUG_REPORT.md&title=%5BBUG%5D+">Report a Bug</a>
   ·
-  <a href="https://github.com/miguerubsk/BatchPDF-Creator/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+  <a href="https://github.com/miguerubsk/BatchPDF-Creator/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=%5BFEATURE%5D+">Request a Feature</a>
   .
-  <a href="https://github.com/miguerubsk/BatchPDF-Creator/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
+  <a href="https://github.com/miguerubsk/BatchPDF-Creator/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=%5BSUPPORT%5D+">Ask a Question</a>
 </div>
 
 
