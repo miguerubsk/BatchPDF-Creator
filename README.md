@@ -9,6 +9,7 @@
 [![ShellCheck Analysis][shell-check-shield]][shell-check-url]
 [![Codacy Security Scan][codacy-shield]][codacy-url]
 [![Bandit Security Scan][bandit-shield]][bandit-url]
+[![Bash Formatting Check][bashcheck-shield]][bashcheck-url]
 <br>
 [![PRs welcome][pr-shield]][pr-url]
 [![made with hearth by miguerubsk][made-shield]][made-url]
@@ -263,3 +264,5 @@ Project Link: [BatchPDF-Creator](https://github.com/miguerubsk/BatchPDF-Creator)
 [made-url]: https://github.com/miguerubsk
 [bandit-shield]: https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/bandit.yml/badge.svg
 [bandit-url]: https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/bandit.yml
+[bashcheck-shield]: https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/bashFcheck.yml/badge.svg
+[bashcheck-url]: https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/bashFcheck.yml
