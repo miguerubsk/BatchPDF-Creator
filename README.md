@@ -5,11 +5,11 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
-<br />
+<br>
 [![ShellCheck Analysis][shell-check-shield]][shell-check-url]
 [![Codacy Security Scan][codacy-shield]][codacy-url]
-[![Bandit Security Scan][bandit-shield]][bandit-shield]
-<br />
+[![Bandit Security Scan][bandit-shield]][bandit-url]
+<br>
 [![PRs welcome][pr-shield]][pr-url]
 [![made with hearth by miguerubsk][made-shield]][made-url]
 
