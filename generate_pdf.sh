@@ -113,7 +113,6 @@ if [ -d "$CONVERTED_DIR" ]; then
     rmdir "$CONVERTED_DIR"
     log_message "✅ Converted images directory removed."
 fi
-
 # Display final summary
 log_message "========================================="
 log_message "📊 FINAL SUMMARY:"
