@@ -17,3 +17,8 @@ jobs:
 
       - name: Run shfmt
         run: shfmt -d .
+
+      - name: Debug shfmt
+        run: |
+          shfmt -version
+          shfmt -d . || true  # Evita que el error detenga el workflow
