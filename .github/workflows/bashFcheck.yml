@@ -10,12 +10,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install shfmt
+      - name: Install shfmt with Go
         run: |
-          curl -L -o shfmt "https://github.com/mvdan/sh/releases/latest/download/shfmt_linux_amd64"
-          file shfmt  # Verifica que es un binario ejecutable
-          chmod +x shfmt
-          sudo mv shfmt /usr/local/bin/
+          go install mvdan.cc/sh/v3/cmd/shfmt@latest
+          echo "$HOME/go/bin" >> $GITHUB_PATH
 
       - name: Run shfmt
-        run: /usr/local/bin/shfmt -d .
+        run: shfmt -d .
