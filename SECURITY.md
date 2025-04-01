@@ -1,23 +1,17 @@
-# Security Policy
-
-## Supported Versions
-
-The following table lists the versions currently supported with security updates:
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | ✅ Yes             |
-
-We recommend always using the latest supported version to ensure you receive security patches and updates.
+Security Policy
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in this project, please follow these steps:
+If there are any vulnerabilities in **BatchPDF-Creator**, don't hesitate to _report them_.
 
-1. **Report Privately**: Do not disclose the vulnerability publicly before a fix is available.  
-2. **Contact Us**: Submit a report via [email/security platform] (replace with contact method).  
-3. **Provide Details**: Include a clear description of the issue, steps to reproduce it, and any relevant logs or proof-of-concept code.  
-4. **Response Time**: We aim to acknowledge reports within **48 hours** and provide updates on the status of the fix regularly.  
-5. **Resolution**: Once confirmed, we will work on a fix and release it as soon as possible. You will be notified of the resolution timeline.  
-
-We appreciate responsible disclosure to keep our project secure for all users.
+1. Use any of the [private contact addresses](https://github.com/miguerubsk/BatchPDF-Creator#support).
+  
+2. Describe the vulnerability.
+  
+  If you have a fix, that is most welcome -- please attach or summarize it in your message!
+  
+3. We will evaluate the vulnerability and, if necessary, release a fix or mitigating steps to address it. We will contact you to let you know the outcome, and will credit you in the report.
+  
+  Please **do not disclose the vulnerability publicly** until a fix is released!
+  
+4. Once we have either a) published a fix, or b) declined to address the vulnerability for whatever reason, you are free to publicly disclose it.
