@@ -1,0 +1,15 @@
+name: Bash Formatting Check
+
+on: [push, pull_request]
+
+jobs:
+  format:
+    name: Check Bash Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install shfmt
+        run: sudo apt update && sudo apt install -y shfmt
+      - name: Run shfmt
+        run: shfmt -d .
