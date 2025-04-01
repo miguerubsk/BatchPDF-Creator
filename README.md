@@ -5,8 +5,11 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
+<br>
 [![ShellCheck Analysis][shell-check-shield]][shell-check-url]
 [![Codacy Security Scan][codacy-shield]][codacy-url]
+[![Bandit Security Scan][bandit-shield]][bandit-shield]
+<br>
 [![PRs welcome][pr-shield]][pr-url]
 [![made with hearth by miguerubsk][made-shield]][made-url]
 
@@ -72,6 +75,8 @@ This Bash script automates the process of converting images in various formats i
 - Compatible formats: JPG, JPEG, PNG, TIFF
 - Incompatible formats (converted to PNG first): BMP, WEBP, GIF, SVG
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Getting Started
 
 ### Prerequisites
@@ -101,6 +106,8 @@ This will:
 - Convert unsupported images to PNG if necessary.
 - Generate a PDF for each processed directory.
 - Provide a final summary with statistics.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## How It Works
 
@@ -158,11 +165,15 @@ Expected output:
 
 After execution, PDFs will be generated in their respective directories, and the temporary `.converted_images` directory will be deleted.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Roadmap
 - [x] Add support for multiple image formats.
 - [x] Include logging for process tracking.
 - [ ] Add a version for Windows.
 - [ ] Support more advanced image processing features.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Support
 
@@ -170,6 +181,8 @@ Reach out to the maintainer at one of the following places:
 
 - [GitHub issues](https://github.com/miguerubsk/BatchPDF-Creator/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
 - Contact options listed on [this GitHub profile](https://github.com/miguerubsk)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Project Assistance
 
@@ -181,6 +194,8 @@ If you want to say **thank you** or/and support active development of PROJECT_NA
 
 Together, we can make BatchPDF-Creator **better**!
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Contributing
 Contributions are welcome! To contribute:
 1. Fork the project
@@ -189,11 +204,15 @@ Contributions are welcome! To contribute:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Authors & Contributors
 
 The original setup of this repository is by [Miguel González García](https://github.com/miguerubsk).
 
 For a full list of all authors and contributors, see [the contributors page](https://github.com/miguerubsk/BatchPDF-Creator/contributors).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Security
 
@@ -202,18 +221,26 @@ BatchPDF-Creator is provided **"as is"** without any **warranty**. Use at your o
 
 _For more information and to report security issues, please refer to our [security documentation](docs/SECURITY.md)._
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## License
 Distributed under the GPL-3.0 license. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contact
 Miguel González García - [@migueru98](https://twitter.com/migueru98) - [miguerubsk@gmail.com](mailto:miguerubsk@gmail.com)
 
 Project Link: [BatchPDF-Creator](https://github.com/miguerubsk/BatchPDF-Creator)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Acknowledgments
 - [ImageMagick](https://imagemagick.org/)
 - [img2pdf](https://github.com/josch/img2pdf)
 - [Bash Scripting Guide](https://tldp.org/LDP/abs/html/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/miguerubsk/BatchPDF-Creator.svg?style=for-the-badge
@@ -234,3 +261,5 @@ Project Link: [BatchPDF-Creator](https://github.com/miguerubsk/BatchPDF-Creator)
 [pr-url]: https://github.com/miguerubsk/BatchPDF-Creator/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
 [made-shield]: https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-miguerubsk-ff1414.svg?style=flat-square
 [made-url]: https://github.com/miguerubsk
+[bandit-shield]: https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/bandit.yml/badge.svg
+[bandit-url]: https://github.com/miguerubsk/BatchPDF-Creator/actions/workflows/bandit.yml
