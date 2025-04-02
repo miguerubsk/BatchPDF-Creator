@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOG_FILE="./pdf_generation.log"
-CONVERTED_DIR="$(mktemp -d)"
+CONVERTED_DIR="./.converted_images"
 TOTAL_DIRS=0
 TOTAL_IMAGES=0
 TOTAL_PDFS=0
