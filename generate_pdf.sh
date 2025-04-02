@@ -1,13 +1,12 @@
 #!/bin/bash
 
 LOG_FILE="./pdf_generation.log"
-CONVERTED_DIR="./.converted_images"
+CONVERTED_DIR="$(mktemp -d)"
 TOTAL_DIRS=0
 TOTAL_IMAGES=0
 TOTAL_PDFS=0
 ERRORS=0
 START_TIME=$(date +%s)
-
 
 # Function to log messages with a timestamp
 log_message() {
