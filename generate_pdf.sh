@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOG_FILE="./pdf_generation.log"
-CONVERTED_DIR="./.converted_images"
+CONVERTED_DIR="$(mktemp -d)"
 TOTAL_DIRS=0
 TOTAL_IMAGES=0
 TOTAL_PDFS=0
@@ -96,6 +96,8 @@ process_directory() {
 	fi
 }
 
+log_message "📂 Converted images directory: $CONVERTED_DIR"
+
 # Iterate through all subdirectories
 log_message "🔍 Searching for directories without subdirectories..."
 while IFS= read -r -d '' dir; do
@@ -109,7 +111,6 @@ done < <(find . -type d -print0)
 if [ -d "$CONVERTED_DIR" ]; then
 	log_message "🗑️ Removing temporary converted images..."
 	rm -rf "$CONVERTED_DIR"
-	rmdir "$CONVERTED_DIR"
 	log_message "✅ Converted images directory removed."
 fi
 
