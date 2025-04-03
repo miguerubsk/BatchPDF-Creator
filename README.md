@@ -225,7 +225,7 @@ _For more information and to report security issues, please refer to our [securi
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
-Distributed under the GPL-3.0 license. See `LICENSE` for more information.
+Distributed under the GPL-3.0 license. See [LICENSE](LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
