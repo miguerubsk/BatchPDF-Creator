@@ -8,6 +8,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,6 +19,6 @@ jobs:
         with:
           body: "New version 🚀"
           files: |
-            generate_pdfs.sh  # Agrega más archivos si es necesario
+            generate_pdfs.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
